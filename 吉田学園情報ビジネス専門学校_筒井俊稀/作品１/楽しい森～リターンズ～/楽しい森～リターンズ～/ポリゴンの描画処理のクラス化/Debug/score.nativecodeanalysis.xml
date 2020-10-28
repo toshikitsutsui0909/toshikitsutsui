@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\program files (x86)\microsoft directx sdk (june 2010)\include\</FILEPATH>
+      <FILENAME>dinput.h</FILENAME>
+      <LINE>4321</LINE>
+      <COLUMN>25</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>'joyConfigChanged' に対する整合性のない注釈: このインスタンスには 注釈なし が含まれます。c:\program files (x86)\windows kits\8.1\include\um\joystickapi.h(444) を参照してください。</DESCRIPTION>
+    <FUNCTION>joyConfigChanged</FUNCTION>
+    <DECORATED>joyConfigChanged@4</DECORATED>
+    <FUNCLINE>4321</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\gsp023\documents\visual studio 2015\projects\ポリゴンの描画処理のクラス化\ポリゴンの描画処理のクラス化\</FILEPATH>
+      <FILENAME>score.cpp</FILENAME>
+      <LINE>109</LINE>
+      <COLUMN>6</COLUMN>
+    </SFA>
+    <DEFECTCODE>6246</DEFECTCODE>
+    <DESCRIPTION>'nValue' のローカル宣言は、外部スコープの同じ名前の宣言を隠します。追加情報については、行 '97' ('c:\users\gsp023\documents\visual studio 2015\projects\ポリゴンの描画処理のクラス化\ポリゴンの描画処理のクラス化\score.cpp') の以前の宣言を参照してください。</DESCRIPTION>
+    <FUNCTION>CScore::AddScore</FUNCTION>
+    <DECORATED>?AddScore@CScore@@QAEXH@Z</DECORATED>
+    <FUNCLINE>97</FUNCLINE>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\gsp023\documents\visual studio 2015\projects\ポリゴンの描画処理のクラス化\ポリゴンの描画処理のクラス化\</FILEPATH>
+        <FILENAME>score.cpp</FILENAME>
+        <LINE>97</LINE>
+        <COLUMN>32</COLUMN>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\gsp023\documents\visual studio 2015\projects\ポリゴンの描画処理のクラス化\ポリゴンの描画処理のクラス化\</FILEPATH>
+      <FILENAME>score.cpp</FILENAME>
+      <LINE>140</LINE>
+      <COLUMN>9</COLUMN>
+    </SFA>
+    <DEFECTCODE>6031</DEFECTCODE>
+    <DESCRIPTION>戻り値が無視されました: 'fscanf'</DESCRIPTION>
+    <FUNCTION>CScore::ReadFile</FUNCTION>
+    <DECORATED>?ReadFile@CScore@@QAEXXZ</DECORATED>
+    <FUNCLINE>130</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>
