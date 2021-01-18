@@ -1,0 +1,10 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (ポリゴンの描画処理のクラス化.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  gauge.cpp
+  main.cpp
+  コード生成しています。
+  1 of 302 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  ポリゴンの描画処理のクラス化.vcxproj -> C:\Users\GSP023\Documents\Visual Studio 2015\Projects\楽しい森～リターンズ～\Release\楽しい森～リターンズ～.exe
+  ポリゴンの描画処理のクラス化.vcxproj -> C:\Users\GSP023\Documents\Visual Studio 2015\Projects\楽しい森～リターンズ～\Release\楽しい森～リターンズ～.pdb (Full PDB)
