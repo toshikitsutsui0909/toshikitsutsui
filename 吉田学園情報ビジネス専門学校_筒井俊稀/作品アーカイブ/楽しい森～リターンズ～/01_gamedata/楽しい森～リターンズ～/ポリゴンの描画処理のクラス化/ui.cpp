@@ -16,7 +16,7 @@
 //-----------------------------------------------------------------------------
 #define RATE (0.005f)
 
-#define TEXTURE_PATH_KURO			"data/texture/kuro.jpg"
+#define TEXTURE_PATH_KURO			"data/texture/carbon.png"
 #define TEXTURE_PATH_LIFE			"data/texture/playerlife.png"
 #define TEXTURE_PATH_WARNING		"data/texture/WARNING.png"
 #define TEXTURE_PATH_PRESS_ENTER	 "data/texture/prese_enter.png"
@@ -146,10 +146,5 @@ void CUi::Update(void)
 //-----------------------------------------------------------------------------
 void CUi::Draw(void)
 {
-	/*LPDIRECT3DDEVICE9 pDevice;
-	pDevice = CManager::GetRenderer()->GetDevice();
-
-	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);*/
 	CScene2d::Draw();
-	//pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 }
