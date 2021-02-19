@@ -11,6 +11,16 @@
 #include "score.h"
 
 //-----------------------------------------------------------------------------
+//　マクロ定義
+//-----------------------------------------------------------------------------
+#define TEXTURE_PATH_RESULT "data/texture/リザルト.jpg"	//リザルトテクスチャ
+
+#define RANKING_POS_X 460.0f
+#define RANKING_POS_Y 220.0f
+#define RANKING_SIZE_X 50.0f
+#define RANKING_SIZE_Y 50.0f
+
+//-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
 //-----------------------------------------------------------------------------
 LPDIRECT3DTEXTURE9 CResult::m_pTexture = NULL;
@@ -40,7 +50,7 @@ HRESULT CResult::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/リザルト.jpg", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_RESULT, &m_pTexture);
 
 	return S_OK;
 }
@@ -116,7 +126,7 @@ HRESULT CResult::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 	//頂点データをアンロックする
 	m_pVtxBuff->Unlock();
 
-	m_pRank = CRanking::Create(D3DXVECTOR3(460.0f, 220.0f, 0.0f), D3DXVECTOR3(50.0f, 50.0f, 0.0f));
+	m_pRank = CRanking::Create(D3DXVECTOR3(RANKING_POS_X, RANKING_POS_Y, 0.0f), D3DXVECTOR3(RANKING_SIZE_X, RANKING_SIZE_Y, 0.0f));
 
 	return S_OK;
 }

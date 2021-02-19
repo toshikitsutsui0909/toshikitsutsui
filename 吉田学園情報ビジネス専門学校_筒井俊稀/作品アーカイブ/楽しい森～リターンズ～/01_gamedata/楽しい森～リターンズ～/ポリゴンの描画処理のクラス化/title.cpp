@@ -9,7 +9,16 @@
 #include "renderer.h"
 #include "input.h"
 
+//=============================================================================
+// マクロ定義
+//=============================================================================
+#define TEXTURE_PATH_TITLE "data/texture/タイトル.jpg"
+
+//=============================================================================
+// 静的メンバ変数宣言初期化
+//=============================================================================
 LPDIRECT3DTEXTURE9 CTitle::m_pTexture = NULL;
+
 //=============================================================================
 // コンストラクタ
 //=============================================================================
@@ -144,7 +153,7 @@ HRESULT CTitle::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/タイトル.jpg", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_TITLE, &m_pTexture);
 
 	return S_OK;
 }

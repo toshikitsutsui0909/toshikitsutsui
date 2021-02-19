@@ -16,6 +16,11 @@
 //-----------------------------------------------------------------------------
 #define RATE (0.005f)
 
+#define TEXTURE_PATH_KURO			"data/texture/kuro.jpg"
+#define TEXTURE_PATH_LIFE			"data/texture/playerlife.png"
+#define TEXTURE_PATH_WARNING		"data/texture/WARNING.png"
+#define TEXTURE_PATH_PRESS_ENTER	 "data/texture/prese_enter.png"
+
 //-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
 //-----------------------------------------------------------------------------
@@ -49,16 +54,16 @@ HRESULT CUi::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/kuro.jpg", &m_apTexture[CUi::TYPE_KUROHAIKEI]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_KURO, &m_apTexture[CUi::TYPE_KUROHAIKEI]);
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/playerlife.png", &m_apTexture[CUi::TYPE_LIFE]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_LIFE, &m_apTexture[CUi::TYPE_LIFE]);
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/WARNING.png", &m_apTexture[CUi::TYPE_WARNING]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_WARNING, &m_apTexture[CUi::TYPE_WARNING]);
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/prese_enter.png", &m_apTexture[CUi::TYPE_PRESS_ENTER]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_PRESS_ENTER, &m_apTexture[CUi::TYPE_PRESS_ENTER]);
 
 	return S_OK;
 }

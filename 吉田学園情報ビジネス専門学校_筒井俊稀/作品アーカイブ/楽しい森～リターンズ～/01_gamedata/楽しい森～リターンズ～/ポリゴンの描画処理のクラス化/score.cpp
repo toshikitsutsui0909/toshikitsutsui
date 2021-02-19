@@ -1,14 +1,25 @@
 //=============================================================================
 //
 // polygon処理 [scene2d.cpp]
-// Author : 
+// Author : 筒井 俊稀
 //
 //=============================================================================
 #include "score.h"
 #include "number.h"
 #include "game.h"
 
+//=============================================================================
+//	マクロ定義
+//=============================================================================
+#define RANKING_DATA_PATH "data/ranking/rankingdata.txt"	//ランキングテキストパス
+#define NUMBER_POS 700.0f									//ナンバーの表示する間隔
+#define NUMBER_RADIX 10.0f									//ラディックス
+
+//=============================================================================
+//	静的メンバ変数宣言初期化
+//=============================================================================
 int CScore::m_nRankingScore[MAX_RANKING] = {};
+
 //=============================================================================
 //	コンストラクタ
 //=============================================================================
@@ -49,7 +60,7 @@ HRESULT CScore::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 {
 	for (int nCount = 0; nCount < MAX_NUMBER; nCount++)
 	{
-		m_apNumber[nCount] = CNumber::Create(D3DXVECTOR3(pos.x + (size.x * nCount), 700.0f, 0.0f), size);
+		m_apNumber[nCount] = CNumber::Create(D3DXVECTOR3(pos.x + (size.x * nCount), NUMBER_POS, 0.0f), size);
 	}
 
 	return S_OK;
@@ -97,7 +108,7 @@ void CScore::Draw(void)
 void CScore::AddScore(int nValue)
 {
 	float fIndex;
-	float fRadix = 10.0f;
+	float fRadix = NUMBER_RADIX;
 
    	m_nScore += nValue;
 	if (m_nScore <= 0)
@@ -131,7 +142,7 @@ void CScore::ReadFile(void)
 {
 	FILE * pFile = NULL;
 
-	pFile = fopen("data/ranking/rankingdata.txt", "r");
+	pFile = fopen(RANKING_DATA_PATH, "r");
 	//NULLチェック
 	if (pFile != NULL)
 	{
@@ -151,7 +162,7 @@ void CScore::WriteFile(void)
 {
 	FILE * pFile = NULL;
 
-	pFile = fopen("data/ranking/rankingdata.txt", "w");
+	pFile = fopen(RANKING_DATA_PATH, "w");
 	//NULLチェック
 	if (pFile != NULL)
 	{

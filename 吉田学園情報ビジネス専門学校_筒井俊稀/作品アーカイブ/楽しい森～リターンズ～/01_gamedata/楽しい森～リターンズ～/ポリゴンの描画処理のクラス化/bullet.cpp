@@ -23,12 +23,17 @@
 //-----------------------------------------------------------------------------
 //	マクロ定義
 //-----------------------------------------------------------------------------
-#define NORMAL_DAMAGE_NUM 1
-#define HARD_DAMAGE_NUM 3
+#define NORMAL_DAMAGE_NUM 1												//体力（NORMAL）
+#define HARD_DAMAGE_NUM 3												//体力（HARD）
 
-#define TEXTURE_PATH_BULLET_PLAYER "data/texture/bullet100.png"
-#define TEXTURE_PATH_BULLET_ENEMY1 "data/texture/enemy_bullet000.png"
-#define TEXTURE_PATH_BULLET_ENEMY2 "data/texture/enemy_bullet001.png"
+#define TEXTURE_PATH_BULLET_PLAYER "data/texture/bullet100.png"			//弾テクスチャ
+#define TEXTURE_PATH_BULLET_ENEMY1 "data/texture/enemy_bullet000.png"	//エネミー弾テクスチャ
+#define TEXTURE_PATH_BULLET_ENEMY2 "data/texture/enemy_bullet001.png"	//エネミー弾テクスチャ
+
+#define BULLET_DIE_POINT_RIGHT 100.0f									//弾が消えるポイント（右）
+#define BULLET_DIE_POINT_LEFT 100.0f									//弾が消えるポイント（左）
+#define BULLET_DIE_POINT_UP 60.0f										//弾が消えるポイント（上）
+#define BULLET_DIE_POINT_DOWN 170.0f									//弾が消えるポイント（下）
 
 //-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
@@ -216,26 +221,26 @@ void CBullet::Update(void)
 	}
 	//ライフがゼロになった時
 	//右
-	if (pos.x + PLAYER_SIZE_X >= SCREEN_WIDTH + 100.0f)
+	if (pos.x + PLAYER_SIZE_X >= SCREEN_WIDTH + BULLET_DIE_POINT_RIGHT)
 	{
 		Uninit();
 		return;
 	}
 	//左
-	if (pos.x - PLAYER_SIZE_X <= -100.0f)
+	if (pos.x - PLAYER_SIZE_X <= -BULLET_DIE_POINT_LEFT)
 	{
 		Uninit();
 		return;
 	}
 	//上
-	if (pos.y - PLAYER_SIZE_Y / 2 <= 60.0f)
+	if (pos.y - PLAYER_SIZE_Y / 2 <= BULLET_DIE_POINT_UP)
 	{
 		CExplosion::Create(pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 		Uninit();
 		return;
 	}
 	//下
-	if (pos.y + PLAYER_SIZE_Y / 2 >= SCREEN_HEIGHT - 170.0f)
+	if (pos.y + PLAYER_SIZE_Y / 2 >= SCREEN_HEIGHT - BULLET_DIE_POINT_DOWN)
 	{
 		CExplosion::Create(pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 		Uninit();
@@ -366,26 +371,26 @@ void CChargeBullet::Update(void)
 	}
 	//ライフがゼロになった時
 	//右
-	if (pos.x + PLAYER_SIZE_X >= SCREEN_WIDTH + 100.0f)
+	if (pos.x + PLAYER_SIZE_X >= SCREEN_WIDTH + BULLET_DIE_POINT_RIGHT)
 	{
 		Uninit();
 		return;
 	}
 	//左
-	if (pos.x - PLAYER_SIZE_X <= -100.0f)
+	if (pos.x - PLAYER_SIZE_X <= -BULLET_DIE_POINT_LEFT)
 	{
 		Uninit();
 		return;
 	}
 	//上
-	if (pos.y - PLAYER_SIZE_Y / 2 <= 60.0f)
+	if (pos.y - PLAYER_SIZE_Y / 2 <= BULLET_DIE_POINT_UP)
 	{
 		CExplosion::Create(pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 		Uninit();
 		return;
 	}
 	//下
-	if (pos.y + PLAYER_SIZE_Y / 2 >= SCREEN_HEIGHT - 170.0f)
+	if (pos.y + PLAYER_SIZE_Y / 2 >= SCREEN_HEIGHT - BULLET_DIE_POINT_DOWN)
 	{
 		CExplosion::Create(pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 		Uninit();

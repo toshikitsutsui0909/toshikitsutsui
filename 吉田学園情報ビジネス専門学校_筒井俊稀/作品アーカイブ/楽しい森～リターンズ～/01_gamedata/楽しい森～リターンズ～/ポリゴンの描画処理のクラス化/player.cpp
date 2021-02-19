@@ -20,6 +20,17 @@
 #include "score.h"
 
 //-----------------------------------------------------------------------------
+//	マクロ定義
+//-----------------------------------------------------------------------------
+#define TEXTURE_PLAYER "data/texture/player1.png"	//プレイヤーテクスチャ
+
+#define PLAYER_LIFE_MAX 3							//残機数
+#define PLAYER_LIFE_NUM 1							//ライフ
+#define PLAYER_LIFE_DECREASE 1						//残機減る数
+#define PLAYER_DIE_POINT 5000						//減るポイント数
+
+
+//-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
 //-----------------------------------------------------------------------------
 LPDIRECT3DTEXTURE9 CPlayer::m_pTexture = NULL;
@@ -34,11 +45,11 @@ CPlayer::CPlayer(int nPriority) : CScene2d(nPriority)
 	m_nCntBullet = 0;
 	m_bPlaying = true;
 	m_bIsDamage = false;
-	m_nLife = 1;
-	m_nCountLife = 3;
+	m_nLife = PLAYER_LIFE_NUM;
+	m_nCountLife = PLAYER_LIFE_MAX;
 	m_Count = 0;
-	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	m_size = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	m_pos = D3DXVECTOR3();
+	m_size = D3DXVECTOR3();
 }
 
 //-----------------------------------------------------------------------------
@@ -221,11 +232,11 @@ void CPlayer::Hit(int nDamage)
 {
 	if (m_bIsDamage)
 	{
-		CGame::GetLife()->SubtractLife(1);
+		CGame::GetLife()->SubtractLife(PLAYER_LIFE_DECREASE);
 		m_nLife -= nDamage;
 		if (m_nLife <= 0)
 		{
-			CGame::GetScore()->AddScore(-5000);
+			CGame::GetScore()->AddScore(-PLAYER_DIE_POINT);
 			CSound *pSound = CManager::GetSound();
 			CGame *pGame = CManager::GetGame();
 			CExplosion::Create(m_pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
@@ -256,7 +267,7 @@ HRESULT CPlayer::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/player1.png", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PLAYER, &m_pTexture);
 
 	return S_OK;
 }

@@ -1,7 +1,7 @@
 //=============================================================================
 //
 // 敵の処理 [enemy.cpp]
-// Author : トシキ
+// Author : 筒井 俊稀
 //
 //=============================================================================
 //-----------------------------------------------------------------------------
@@ -27,9 +27,16 @@
 #define TEXTURE_PATH_ENEMY_HARD		"data/texture/enemy2.png"	//HARD
 #define TEXTURE_PATH_ENEMY_BOSS		"data/texture/boss1.png"	//boss
 
-#define ENEMY_LIFE_NORMAL 1
-#define ENEMY_LIFE_HARD 3
-#define ENEMY_LIFE_BOSS 300
+#define ENEMY_LIFE_NORMAL 1										//通常敵の体力
+#define ENEMY_LIFE_HARD 3										//特殊敵の体力
+#define ENEMY_LIFE_BOSS 300										//ボスの体力
+
+#define ENEMY_MOVE_X -4.0f
+#define ENEMY_MOVE_Y 1.0f
+
+#define ENEMY_NORMAL_POINTUP 2000								//通常敵を倒したときのポイント
+#define ENEMY_HARD_POINTUP 6000									//特殊敵を倒したときのポイント
+#define ENEMY_BOSS_POINTUP 250000								//ボスを倒したときのポイント
 
 //-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
@@ -45,7 +52,7 @@ CEnemy::CEnemy(int nPriority) : CScene2d(nPriority)
 	m_nCount = 0;
 	m_nLife = 0;
 	m_nRandNumber = 0;
-	m_move = D3DXVECTOR3(-4.0f, 1.0f, 0.0f);
+	m_move = D3DXVECTOR3(ENEMY_MOVE_X, ENEMY_MOVE_Y, 0.0f);
 	m_pos = D3DXVECTOR3();
 	m_size = D3DXVECTOR3();
 	m_Counter = 0;
@@ -452,7 +459,7 @@ void CEnemy::Hit(int nDamage)
 		//通常の敵
 		case TYPE_NORMAL:
 			//スコア100を加
-			CGame::GetScore()->AddScore(2000);
+			CGame::GetScore()->AddScore(ENEMY_NORMAL_POINTUP);
 			CExplosion::Create(m_pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 			pSound->Play(CSound::SOUND_LABEL_SE_EXPLOSION);
 			Uninit();
@@ -461,7 +468,7 @@ void CEnemy::Hit(int nDamage)
 		//通常の敵２
 		case TYPE_NORMAL_2:
 			//スコア100を加
-			CGame::GetScore()->AddScore(2000);
+			CGame::GetScore()->AddScore(ENEMY_NORMAL_POINTUP);
 			CExplosion::Create(m_pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 			pSound->Play(CSound::SOUND_LABEL_SE_EXPLOSION);
 			Uninit();
@@ -470,7 +477,7 @@ void CEnemy::Hit(int nDamage)
 		//通常の敵３
 		case TYPE_NORMAL_3:
 			//スコア100を加
-			CGame::GetScore()->AddScore(2000);
+			CGame::GetScore()->AddScore(ENEMY_NORMAL_POINTUP);
 			CExplosion::Create(m_pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 			pSound->Play(CSound::SOUND_LABEL_SE_EXPLOSION);
 			Uninit();
@@ -478,7 +485,7 @@ void CEnemy::Hit(int nDamage)
 
 		//通常の敵４
 		case TYPE_NORMAL_4:
-			CGame::GetScore()->AddScore(2050);
+			CGame::GetScore()->AddScore(ENEMY_NORMAL_POINTUP);
 			CExplosion::Create(m_pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 			pSound->Play(CSound::SOUND_LABEL_SE_EXPLOSION);
 			Uninit();
@@ -486,7 +493,7 @@ void CEnemy::Hit(int nDamage)
 
 		//通常の敵５
 		case TYPE_NORMAL_5:
-			CGame::GetScore()->AddScore(3150);
+			CGame::GetScore()->AddScore(ENEMY_NORMAL_POINTUP);
 			CExplosion::Create(m_pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 			pSound->Play(CSound::SOUND_LABEL_SE_EXPLOSION);
 			Uninit();
@@ -494,7 +501,7 @@ void CEnemy::Hit(int nDamage)
 
 		//紫の敵
 		case TYPE_HARDTYPE:
-			CGame::GetScore()->AddScore(7500);
+			CGame::GetScore()->AddScore(ENEMY_HARD_POINTUP);
 			CExplosion::Create(m_pos, D3DXVECTOR3(EXPLOSION_SIZE, EXPLOSION_SIZE, 0.0f));
 			pSound->Play(CSound::SOUND_LABEL_SE_EXPLOSION);
 			Uninit();
@@ -506,7 +513,7 @@ void CEnemy::Hit(int nDamage)
 			{
 				pGame->GetPlayer()->SetPlayer(false);
 				//スコア500を加算
-				CGame::GetScore()->AddScore(250000);
+				CGame::GetScore()->AddScore(ENEMY_BOSS_POINTUP);
 				//爆発の生成
 				CExplosion::Create(m_pos, D3DXVECTOR3(EXPLOSION_SIZE * 10, EXPLOSION_SIZE * 10, 0.0f));
 				//爆発の音

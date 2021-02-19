@@ -11,6 +11,11 @@
 #include "score.h"
 
 //-----------------------------------------------------------------------------
+//	マクロ定義
+//-----------------------------------------------------------------------------
+#define TEXTURE_PATH_GAMEOVER "data/texture/gameover000.jpg"
+
+//-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
 //-----------------------------------------------------------------------------
 LPDIRECT3DTEXTURE9 CGameover::m_pTexture = NULL;
@@ -39,7 +44,7 @@ HRESULT CGameover::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/gameover000.jpg", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_GAMEOVER, &m_pTexture);
 
 	return S_OK;
 }

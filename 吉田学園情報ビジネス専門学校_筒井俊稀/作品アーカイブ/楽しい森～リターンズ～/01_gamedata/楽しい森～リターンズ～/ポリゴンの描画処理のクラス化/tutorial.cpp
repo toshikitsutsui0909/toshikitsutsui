@@ -1,13 +1,18 @@
 //=============================================================================
 //
-// マネージャー処理 [manager.cpp]
-// Author : トシキ
+// チュートリアル処理 [tutorial.cpp]
+// Author : 筒井 俊稀
 //
 //=============================================================================
 #include "tutorial.h"
 #include "manager.h"
 #include "renderer.h"
 #include "input.h"
+
+//=============================================================================
+// マクロ定義
+//=============================================================================
+#define TEXTURE_PATH_TUTOLIAL "data/texture/tutorial000.png"
 
 //=============================================================================
 // 静的メンバ変数宣言
@@ -38,7 +43,7 @@ HRESULT CTutorial::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/tutorial000.png", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_TUTOLIAL, &m_pTexture);
 
 	return S_OK;
 }

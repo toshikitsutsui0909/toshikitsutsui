@@ -11,7 +11,16 @@
 #include "manager.h"
 #include "renderer.h"
 
+//=============================================================================
+//	マクロ定義
+//=============================================================================
+#define TEXTURE_NUMBER "data/texture/number000.png"
+
+//=============================================================================
+//	静的メンバ変数宣言
+//=============================================================================
 LPDIRECT3DTEXTURE9 CNumber::m_pTexture = NULL;
+
 //=============================================================================
 //	コンストラクタ
 //=============================================================================
@@ -41,7 +50,7 @@ HRESULT CNumber::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/number000.png", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_NUMBER, &m_pTexture);
 
 	return S_OK;
 }

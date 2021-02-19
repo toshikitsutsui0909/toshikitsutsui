@@ -12,6 +12,11 @@
 #include "renderer.h"
 
 //-----------------------------------------------------------------------------
+//	マクロ定義
+//-----------------------------------------------------------------------------
+#define TEXTURE_PATH_GAUGBER "data/texture/gaugeber001.png"
+
+//-----------------------------------------------------------------------------
 //	静的メンバ変数宣言の初期化
 //-----------------------------------------------------------------------------
 LPDIRECT3DTEXTURE9 CGaugeber::m_pTexture = NULL;
@@ -91,7 +96,7 @@ HRESULT CGaugeber::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/gaugeber001.png", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_GAUGBER, &m_pTexture);
 
 	return S_OK;
 }
