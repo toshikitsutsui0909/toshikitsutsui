@@ -38,7 +38,7 @@ HRESULT CTutorial::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/tutorial000.jpg", &m_pTexture);
+	D3DXCreateTextureFromFile(pDevice, "data/texture/tutorial000.png", &m_pTexture);
 
 	return S_OK;
 }

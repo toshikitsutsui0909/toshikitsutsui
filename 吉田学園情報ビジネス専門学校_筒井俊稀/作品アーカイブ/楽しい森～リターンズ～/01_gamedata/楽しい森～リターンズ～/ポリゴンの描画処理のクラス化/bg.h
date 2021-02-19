@@ -1,7 +1,7 @@
 //------------------------------------------
 //
 //	背景の処理[bg.h]
-//	筒井
+//	Author : 筒井 俊稀
 //
 //------------------------------------------
 
@@ -38,9 +38,9 @@ public:
 	void Draw(void);
 private:
 	//メンバ変数宣言
-	float m_fSpeed0;								//背景移動スピード
-	float m_fSpeed1;								//背景移動スピード
-	float m_fSpeed2;								//背景移動スピード
+	float m_fSpeedFast;								//背景移動スピード
+	float m_fSpeedSecond;								//背景移動スピード
+	float m_fSpeedThird;								//背景移動スピード
 	static LPDIRECT3DTEXTURE9 m_apTexture[MAX_BG];	//テクスチャ
 	CScene2d *m_apScene2d[MAX_BG];					//Scene情報
 	D3DXVECTOR3 m_pos;								//座標

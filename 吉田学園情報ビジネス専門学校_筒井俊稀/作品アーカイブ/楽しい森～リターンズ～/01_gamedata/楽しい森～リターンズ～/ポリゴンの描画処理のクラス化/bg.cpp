@@ -1,7 +1,7 @@
 //=============================================================================
 //
 // 背景の処理 [bg.cpp]
-// Author : トシキ
+// Author : 筒井 俊稀
 //
 //=============================================================================
 //-----------------------------------------------------------------------------
@@ -11,6 +11,17 @@
 #include "renderer.h"
 #include "manager.h"
 #include "scene2d.h"
+
+//-----------------------------------------------------------------------------
+//	マクロ定義
+//-----------------------------------------------------------------------------
+#define SPEED_FAST		0.003f	// 背景の動くスピード（奥）
+#define SPEED_SECOND	0.002f	// 背景の動くスピード（真ん中）
+#define SPEED_THIRD		0.005f	// 背景の動くスピード（前）
+
+#define TEXTURE_PATH_BG_0 "data/texture/bg104.png"	// 奥
+#define TEXTURE_PATH_BG_1 "data/texture/bg101.png"	// 真ん中
+#define TEXTURE_PATH_BG_2 "data/texture/bg111.png"	// 前
 
 //-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
@@ -27,9 +38,9 @@ CBg::CBg(int nPriority) : CScene(nPriority)
 	m_apScene2d[1] = NULL;
 	m_apScene2d[2] = NULL;
 	
-	m_fSpeed0 = 0;
-	m_fSpeed1 = 0;
-	m_fSpeed2 = 0;
+	m_fSpeedFast = 0;
+	m_fSpeedSecond = 0;
+	m_fSpeedThird = 0;
 }
 
 //-----------------------------------------------------------------------------
@@ -47,11 +58,11 @@ HRESULT CBg::Load(void)
 	LPDIRECT3DDEVICE9 pDevice;
 	pDevice = CManager::GetRenderer()->GetDevice();
 	////テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/bg104.png", &m_apTexture[0]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_BG_0, &m_apTexture[0]);
 
-	D3DXCreateTextureFromFile(pDevice, "data/texture/bg101.png", &m_apTexture[1]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_BG_1, &m_apTexture[1]);
 
-	D3DXCreateTextureFromFile(pDevice, "data/texture/bg111.png", &m_apTexture[2]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_BG_2, &m_apTexture[2]);
 
 	return S_OK;
 }
@@ -128,28 +139,28 @@ void CBg::Update(void)
 	D3DXVECTOR2 tex[4];
 
 	//移動量を決める
-	m_fSpeed0 += 0.003f;
-	m_fSpeed1 += 0.002f;
-	m_fSpeed2 += 0.005f;
+	m_fSpeedFast += SPEED_FAST;
+	m_fSpeedSecond += SPEED_SECOND;
+	m_fSpeedThird += SPEED_THIRD;
 
-	tex[0] = D3DXVECTOR2(0.0f + m_fSpeed0, 0.0f);
-	tex[1] = D3DXVECTOR2(1.0f + m_fSpeed0, 0.0f);
-	tex[2] = D3DXVECTOR2(0.0f + m_fSpeed0, 1.0f);
-	tex[3] = D3DXVECTOR2(1.0f + m_fSpeed0, 1.0f);
+	tex[0] = D3DXVECTOR2(0.0f + m_fSpeedFast, 0.0f);
+	tex[1] = D3DXVECTOR2(1.0f + m_fSpeedFast, 0.0f);
+	tex[2] = D3DXVECTOR2(0.0f + m_fSpeedFast, 1.0f);
+	tex[3] = D3DXVECTOR2(1.0f + m_fSpeedFast, 1.0f);
 
 	m_apScene2d[0]->SetTex(tex);
 
-	tex[0] = D3DXVECTOR2(0.0f + m_fSpeed1, 0.0f);
-	tex[1] = D3DXVECTOR2(1.0f + m_fSpeed1, 0.0f);
-	tex[2] = D3DXVECTOR2(0.0f + m_fSpeed1, 1.0f);
-	tex[3] = D3DXVECTOR2(1.0f + m_fSpeed1, 1.0f);
+	tex[0] = D3DXVECTOR2(0.0f + m_fSpeedSecond, 0.0f);
+	tex[1] = D3DXVECTOR2(1.0f + m_fSpeedSecond, 0.0f);
+	tex[2] = D3DXVECTOR2(0.0f + m_fSpeedSecond, 1.0f);
+	tex[3] = D3DXVECTOR2(1.0f + m_fSpeedSecond, 1.0f);
 
 	m_apScene2d[1]->SetTex(tex);
 
-	tex[0] = D3DXVECTOR2(0.0f + m_fSpeed2, 0.0f);
-	tex[1] = D3DXVECTOR2(1.0f + m_fSpeed2, 0.0f);
-	tex[2] = D3DXVECTOR2(0.0f + m_fSpeed2, 1.0f);
-	tex[3] = D3DXVECTOR2(1.0f + m_fSpeed2, 1.0f);
+	tex[0] = D3DXVECTOR2(0.0f + m_fSpeedThird, 0.0f);
+	tex[1] = D3DXVECTOR2(1.0f + m_fSpeedThird, 0.0f);
+	tex[2] = D3DXVECTOR2(0.0f + m_fSpeedThird, 1.0f);
+	tex[3] = D3DXVECTOR2(1.0f + m_fSpeedThird, 1.0f);
 
 	m_apScene2d[2]->SetTex(tex);
 

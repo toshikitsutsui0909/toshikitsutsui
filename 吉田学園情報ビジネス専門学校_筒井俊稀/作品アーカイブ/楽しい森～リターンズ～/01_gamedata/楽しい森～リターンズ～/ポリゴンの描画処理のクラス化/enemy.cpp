@@ -19,6 +19,18 @@
 #include "game.h"
 #include "main.h"
 #include "player.h"
+
+//-----------------------------------------------------------------------------
+//	マクロ定義
+//-----------------------------------------------------------------------------
+#define TEXTURE_PATH_ENEMY_NORMAL	"data/texture/enemy1.png"	//NORMAL
+#define TEXTURE_PATH_ENEMY_HARD		"data/texture/enemy2.png"	//HARD
+#define TEXTURE_PATH_ENEMY_BOSS		"data/texture/boss1.png"	//boss
+
+#define ENEMY_LIFE_NORMAL 1
+#define ENEMY_LIFE_HARD 3
+#define ENEMY_LIFE_BOSS 300
+
 //-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
 //-----------------------------------------------------------------------------
@@ -57,19 +69,19 @@ HRESULT CEnemy::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/enemy1.png", &m_apTexture[ENEMYTYPE::TYPE_NORMAL]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_NORMAL, &m_apTexture[ENEMYTYPE::TYPE_NORMAL]);
 
-	D3DXCreateTextureFromFile(pDevice, "data/texture/enemy1.png", &m_apTexture[ENEMYTYPE::TYPE_NORMAL_2]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_NORMAL, &m_apTexture[ENEMYTYPE::TYPE_NORMAL_2]);
 
-	D3DXCreateTextureFromFile(pDevice, "data/texture/enemy1.png", &m_apTexture[ENEMYTYPE::TYPE_NORMAL_3]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_NORMAL, &m_apTexture[ENEMYTYPE::TYPE_NORMAL_3]);
 
-	D3DXCreateTextureFromFile(pDevice, "data/texture/enemy2.png", &m_apTexture[ENEMYTYPE::TYPE_NORMAL_4]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_HARD, &m_apTexture[ENEMYTYPE::TYPE_NORMAL_4]);
 
-	D3DXCreateTextureFromFile(pDevice, "data/texture/enemy2.png", &m_apTexture[ENEMYTYPE::TYPE_NORMAL_5]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_HARD, &m_apTexture[ENEMYTYPE::TYPE_NORMAL_5]);
 
-	D3DXCreateTextureFromFile(pDevice, "data/texture/enemy2.png", &m_apTexture[ENEMYTYPE::TYPE_HARDTYPE]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_HARD, &m_apTexture[ENEMYTYPE::TYPE_HARDTYPE]);
 
-	D3DXCreateTextureFromFile(pDevice, "data/texture/boss1.png", &m_apTexture[ENEMYTYPE::TYPE_BOSS]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_BOSS, &m_apTexture[ENEMYTYPE::TYPE_BOSS]);
 
 	return S_OK;
 }
@@ -116,31 +128,31 @@ HRESULT CEnemy::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size, ENEMYTYPE type)
 	switch (m_type)
 	{
 	case TYPE_NORMAL:
-		m_nLife = 1;
+		m_nLife = ENEMY_LIFE_NORMAL;
 		break;
 
 	case TYPE_NORMAL_2:
-		m_nLife = 1;
+		m_nLife = ENEMY_LIFE_NORMAL;
 		break;
 
 	case TYPE_NORMAL_3:
-		m_nLife = 1;
+		m_nLife = ENEMY_LIFE_NORMAL;
 		break;
 
 	case TYPE_NORMAL_4:
-		m_nLife = 2;
+		m_nLife = ENEMY_LIFE_NORMAL;
 		break;
 
 	case TYPE_NORMAL_5:
-		m_nLife = 2;
+		m_nLife = ENEMY_LIFE_NORMAL;
 		break;
 
 	case TYPE_HARDTYPE:
-		m_nLife = 3;
+		m_nLife = ENEMY_LIFE_HARD;
 		break;
 
 	case TYPE_BOSS:
-		m_nLife = 300;
+		m_nLife = ENEMY_LIFE_BOSS;
 		break;
 	}
 	//2Dポリゴンの生成
@@ -171,7 +183,7 @@ void CEnemy::Update(void)
 	CGame *pGame = CManager::GetGame();
 
 	m_nCount++;
-	//復活した後の無敵時間中、自機を点滅させる
+	//ダメージをくらったら点滅させる
 	if (m_bDamege)
 	{
 		m_nCntCol++;

@@ -1,7 +1,7 @@
 //=============================================================================
 //
 // 弾の処理 [bullet.cpp]
-// Author : トシキ
+// Author : 筒井 俊稀
 //
 //=============================================================================
 //-----------------------------------------------------------------------------
@@ -19,6 +19,16 @@
 #include "player.h"
 #include "game.h"
 #include "life.h"
+
+//-----------------------------------------------------------------------------
+//	マクロ定義
+//-----------------------------------------------------------------------------
+#define NORMAL_DAMAGE_NUM 1
+#define HARD_DAMAGE_NUM 3
+
+#define TEXTURE_PATH_BULLET_PLAYER "data/texture/bullet100.png"
+#define TEXTURE_PATH_BULLET_ENEMY1 "data/texture/enemy_bullet000.png"
+#define TEXTURE_PATH_BULLET_ENEMY2 "data/texture/enemy_bullet001.png"
 
 //-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
@@ -54,13 +64,13 @@ HRESULT CBullet::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/bullet100.png", &m_apTexture[BULLETTYPE_PLAYER]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_BULLET_PLAYER, &m_apTexture[BULLETTYPE_PLAYER]);
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/enemy_bullet000.png", &m_apTexture[BULLETTYPE_ENEMY]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_BULLET_ENEMY1, &m_apTexture[BULLETTYPE_ENEMY]);
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, "data/texture/enemy_bullet001.png", &m_apTexture[BULLETTYPE_ENEMY_2]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_BULLET_ENEMY2, &m_apTexture[BULLETTYPE_ENEMY_2]);
 	return S_OK;
 }
 
@@ -105,7 +115,7 @@ HRESULT CBullet::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 move, BULLE
 	m_move = move;
 	m_BulletType = type;
 	//ダメージ数
-	SetBullet(1);
+	SetBullet(NORMAL_DAMAGE_NUM);
 	CScene2d::BindTexture(m_apTexture[type]);
 	return S_OK;
 }
@@ -289,7 +299,7 @@ HRESULT CChargeBullet::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size, D3DXVECTOR3 move,
 	m_move = move;
 	m_BulletType = type;
 	//ダメージ数
- 	SetBullet(3);
+ 	SetBullet(HARD_DAMAGE_NUM);
 	return S_OK;
 }
 

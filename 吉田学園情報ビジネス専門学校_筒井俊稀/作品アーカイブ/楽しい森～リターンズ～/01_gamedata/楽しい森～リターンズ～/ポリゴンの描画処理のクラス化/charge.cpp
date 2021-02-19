@@ -10,8 +10,23 @@
 #include "charge.h"
 #include "gauge.h"
 
+//-----------------------------------------------------------------------------
+//	マクロ定義
+//-----------------------------------------------------------------------------
+#define CHARGE_POS_X 500.0f		//チャージのX座標
+#define CHARGE_POS_Y 630.0f		//チャージのY座標
+
+#define CHARGE_SIZE_X 5.1f		//チャージの大きさ
+#define CHARGE_SIZE_Y 10.0f		//チャージの大きさ
+
+#define ADD_COUNT_NUM 60		//チャージが溜まるスピ―ド
+
+//-----------------------------------------------------------------------------
+//	静的メンバ変数初期化
+//-----------------------------------------------------------------------------
 int CCharge::m_nCount = 0;
 CGauge *CCharge::m_pGauge = NULL;
+
 //=============================================================================
 //	コンストラクタ
 //=============================================================================
@@ -46,7 +61,8 @@ CCharge * CCharge::Create(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 HRESULT CCharge::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 {
 	SetObjType(OBJTYPE_CHARGE);
-	m_pGauge = CGauge::Create(D3DXVECTOR3(500.0f, 630.0f, 0.0f), D3DXVECTOR3(5.1f,10.0f,0.0f));
+	m_pGauge = CGauge::Create(D3DXVECTOR3(CHARGE_POS_X, CHARGE_POS_Y, 0.0f),
+							  D3DXVECTOR3(CHARGE_SIZE_X, CHARGE_SIZE_Y,0.0f));
 	return S_OK;
 }
 
@@ -89,9 +105,9 @@ void CCharge::Draw(void)
 void CCharge::Add(void)
 {
 	m_nCount++;
-	if (m_nCount >= 60)
+	if (m_nCount >= ADD_COUNT_NUM)
 	{
-		m_nCount = 60;
+		m_nCount = ADD_COUNT_NUM;
 	}
 	if (m_pGauge != NULL)
 	{
