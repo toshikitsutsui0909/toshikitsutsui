@@ -371,6 +371,7 @@ void CEnemy::Update(void)
 		{
 			m_move.x = 0.0f;
 		}
+
 		if (50 % (rand() % 100 + 20) == 0 && m_pos.x - BOSS_SIZE <= SCREEN_WIDTH)
 		{
 			pSound->Play(CSound::SOUND_LABEL_SE_SHOT);
