@@ -36,7 +36,7 @@ public:
 	}BULLETTYPE;
 
 	//ƒƒ“ƒoŠÖ”éŒ¾
-	CBullet(int nPriority = 6);
+	CBullet(int nPriority = OBJTYPE_BULLET);
 	virtual ~CBullet();
 	static HRESULT Load(void);
 	static void UnLoad(void);

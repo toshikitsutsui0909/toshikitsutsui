@@ -26,7 +26,7 @@ class CCharge : public CScene
 {
 public:
 	//ƒƒ“ƒoŠÖ”éŒ¾
-	CCharge(int nPriority = 12);
+	CCharge(int nPriority = OBJTYPE_CHARGE);
 	~CCharge();
 
 	static CCharge *Create(D3DXVECTOR3 pos = D3DXVECTOR3(), D3DXVECTOR3 size = D3DXVECTOR3());

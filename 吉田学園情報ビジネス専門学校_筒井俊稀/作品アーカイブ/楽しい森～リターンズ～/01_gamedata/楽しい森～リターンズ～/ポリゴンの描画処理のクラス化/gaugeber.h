@@ -21,7 +21,7 @@ class CGaugeber : public CScene2d
 {
 public:
 	//ƒƒ“ƒoŠÖ”éŒ¾
-	CGaugeber(int nPriority = 13);
+	CGaugeber(int nPriority = OBJTYPE_GAUGEBER);
 	~CGaugeber();
 
 	static CGaugeber *Create(D3DXVECTOR3 pos, D3DXVECTOR3 size);

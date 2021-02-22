@@ -21,7 +21,7 @@ class CPlayer : public CScene2d
 {
 public:
 	//ƒƒ“ƒoŠÖ”éŒ¾
-	CPlayer(int nPriority = 7);
+	CPlayer(int nPriority = OBJTYPE_PLAYER);
 	~CPlayer();
 	static CPlayer *Create(D3DXVECTOR3 pos, D3DXVECTOR3 size);
 	HRESULT Init(D3DXVECTOR3 pos, D3DXVECTOR3 size);

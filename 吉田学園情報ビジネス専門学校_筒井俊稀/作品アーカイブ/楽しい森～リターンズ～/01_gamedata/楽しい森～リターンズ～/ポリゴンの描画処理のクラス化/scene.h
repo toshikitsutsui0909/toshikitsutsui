@@ -23,22 +23,21 @@ public:
 	typedef enum
 	{
 		OBJTYPE_NONE = 0,
-		OBJTYPE_PLAYER,
-		OBJTYPE_PLAYER_RIGHT,
-		OBJTYPE_PLAYER_LEFT,
-		OBJTYPE_ENEMY,
-		OBJTYPE_BULLET,
-		OBJTYPE_CBULLET,
-		OBJTYPE_LIFE,
-		OBJTYPE_ITEM,
-		OBJTYPE_BG,
-		OBJTYPE_FADE,
-		OBJTYPE_CHARGE,
-		OBJTYPE_GAUGEBER,
+		OBJTYPE_BG,				//背景オブジェクト
+		OBJTYPE_LIFE,			//ライフオブジェクト
+		OBJTYPE_BULLET,			//バレットオブジェクト
+		OBJTYPE_CBULLET,		//チャージバレットオブジェクト
+		OBJTYPE_PLAYER,			//プレイヤーオブジェクト
+		OBJTYPE_ENEMY,			//エネミーオブジェクト
+		OBJTYPE_EXPLOSION,		//爆発オブジェクト
+		OBJTYPE_SCORE,			//スコアオブジェクト
+		OBJTYPE_CHARGE,			//チャージオブジェクト
+		OBJTYPE_GAUGEBER,		//ゲージバーオブジェクト
+		OBJTYPE_FADE,			//フェードオブジェクト
 		OBJTYPE_MAX
 	}OBJTYPE;
 
-	CScene(int nPriority = 3);
+	CScene(int nPriority = OBJTYPE_NONE);
 	virtual ~CScene();
 	void SetObjType(OBJTYPE objtype);
 	OBJTYPE GetObjType(void);

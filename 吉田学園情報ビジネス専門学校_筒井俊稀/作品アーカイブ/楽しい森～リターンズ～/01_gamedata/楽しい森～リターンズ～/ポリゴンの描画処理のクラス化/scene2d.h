@@ -27,7 +27,7 @@ public:
 		FLASH_STATE_OUT,
 		FLASH_STATE_MAX
 	}FLASH_STATE;
-	CScene2d(int nPriority = 3);
+	CScene2d(int nPriority = OBJTYPE_NONE);
 	~CScene2d();
 	HRESULT Init(D3DXVECTOR3 pos, D3DXVECTOR3 size);
 	void Uninit(void);

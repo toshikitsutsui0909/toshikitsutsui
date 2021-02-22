@@ -27,7 +27,7 @@ class CBg : public CScene
 {
 public:
 	//メンバ関数宣言
-	CBg(int nPriority = 0);
+	CBg(int nPriority = OBJTYPE_NONE);
 	~CBg();
 	static HRESULT Load(void);
 	static void UnLoad(void);
@@ -39,8 +39,8 @@ public:
 private:
 	//メンバ変数宣言
 	float m_fSpeedFast;								//背景移動スピード
-	float m_fSpeedSecond;								//背景移動スピード
-	float m_fSpeedThird;								//背景移動スピード
+	float m_fSpeedSecond;							//背景移動スピード
+	float m_fSpeedThird;							//背景移動スピード
 	static LPDIRECT3DTEXTURE9 m_apTexture[MAX_BG];	//テクスチャ
 	CScene2d *m_apScene2d[MAX_BG];					//Scene情報
 	D3DXVECTOR3 m_pos;								//座標

@@ -1,7 +1,7 @@
 //=============================================================================
 //
-// 背景の処理 [bullet.cpp]
-// Author : トシキ
+// 背景の処理 [ui.cpp]
+// Author : 筒井 俊稀
 //
 //=============================================================================
 //-----------------------------------------------------------------------------
@@ -16,10 +16,13 @@
 //-----------------------------------------------------------------------------
 #define RATE (0.005f)
 
-#define TEXTURE_PATH_KURO			"data/texture/carbon.png"
-#define TEXTURE_PATH_LIFE			"data/texture/playerlife.png"
-#define TEXTURE_PATH_WARNING		"data/texture/WARNING.png"
-#define TEXTURE_PATH_PRESS_ENTER	 "data/texture/prese_enter.png"
+#define TEXTURE_PATH_DOWNUI			"data/texture/carbon.png"		//下の黒い場所
+#define TEXTURE_PATH_LIFE			"data/texture/playerlife.png"	//プレイヤーライフ
+#define TEXTURE_PATH_WARNING		"data/texture/WARNING.png"		//WARNING表記
+#define TEXTURE_PATH_PRESS_ENTER	 "data/texture/prese_enter.png"	//PRESSENTER表記
+
+#define PRESS_ENTER_FLASING_SPEED_1 20								//はじめ
+#define PRESS_ENTER_FLASING_SPEED_2 40								//終わり
 
 //-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
@@ -54,7 +57,7 @@ HRESULT CUi::Load(void)
 	pDevice = CManager::GetRenderer()->GetDevice();
 
 	//テクスチャの読み込み
-	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_KURO, &m_apTexture[CUi::TYPE_KUROHAIKEI]);
+	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_DOWNUI, &m_apTexture[CUi::TYPE_DOWNUI]);
 
 	//テクスチャの読み込み
 	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_LIFE, &m_apTexture[CUi::TYPE_LIFE]);
@@ -124,17 +127,19 @@ void CUi::Uninit(void)
 void CUi::Update(void)
 {
 	m_nCount++;
+	//WARNING処理
 	if (m_type == TYPE_WARNING)
 	{
 		CScene2d::Flashing();
 	}
+	//PRESSENTER処理
 	if (m_type == TYPE_PRESS_ENTER)
 	{
-		if (m_nCount % 20 == 0)
+		if (m_nCount % PRESS_ENTER_FLASING_SPEED_1 == 0)
 		{
 			CScene2d::SetColor(D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.0f));
 		}
-		if (m_nCount % 40 == 0)
+		if (m_nCount % PRESS_ENTER_FLASING_SPEED_2 == 0)
 		{
 			CScene2d::SetColor(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 		}

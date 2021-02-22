@@ -27,7 +27,7 @@ class CLife : public CScene
 {
 public:
 	//ƒƒ“ƒoŠÖ”éŒ¾
-	CLife(int nPriority = 4);
+	CLife(int nPriority = OBJTYPE_LIFE);
 	~CLife();
 
 	static CLife *Create(D3DXVECTOR3 pos, D3DXVECTOR3 size);

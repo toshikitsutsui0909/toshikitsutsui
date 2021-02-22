@@ -25,7 +25,7 @@ class CNumber;
 class CScore : public CScene
 {
 public:
-	CScore(int nPriority = 8);
+	CScore(int nPriority = OBJTYPE_SCORE);
 	~CScore();
 
 	static CScore *Create(D3DXVECTOR3 pos, D3DXVECTOR3 size);

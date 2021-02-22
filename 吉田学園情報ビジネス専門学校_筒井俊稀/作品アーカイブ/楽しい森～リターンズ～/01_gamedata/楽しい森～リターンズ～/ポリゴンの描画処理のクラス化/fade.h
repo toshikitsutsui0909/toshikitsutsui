@@ -30,7 +30,7 @@ public:
 	}FADE;
 
 	//ÉÅÉìÉoä÷êîêÈåæ
-	CFade(int nPriority = 14);
+	CFade(int nPriority = OBJTYPE_FADE);
 	~CFade();
 	static CFade *Create(D3DXVECTOR3 pos = D3DXVECTOR3(), D3DXVECTOR3 size = D3DXVECTOR3());
 	HRESULT Init(D3DXVECTOR3 pos = D3DXVECTOR3(), D3DXVECTOR3 size = D3DXVECTOR3());

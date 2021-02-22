@@ -92,7 +92,7 @@ HRESULT CGame::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 	//背景の生成
 	CBg::Create(D3DXVECTOR3(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 60.0f, 0.0f), D3DXVECTOR3(SCREEN_WIDTH, 620.0f, 0.0f));
 	//下のUIの表示の生成（スコアと自機の残機が入っているところ）
-	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH / 2, 720.0f, 0.0f), D3DXVECTOR3(1280.0f, 250.0f, 0.0f),CUi::TYPE_KUROHAIKEI);
+	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH / 2, 720.0f, 0.0f), D3DXVECTOR3(1280.0f, 250.0f, 0.0f),CUi::TYPE_DOWNUI);
 	//チャージの生成処理
 	CCharge::Create();
 	//ゲージバーの生成処理

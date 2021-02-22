@@ -28,14 +28,14 @@ public:
 	typedef enum 
 	{
 		TYPE_NONE = 0,
-		TYPE_KUROHAIKEI,
-		TYPE_LIFE,
-		TYPE_WARNING,
-		TYPE_PRESS_ENTER,
+		TYPE_DOWNUI,		//下の黒い場所
+		TYPE_LIFE,			//プレイヤーライフ
+		TYPE_WARNING,		//WARNING
+		TYPE_PRESS_ENTER,	//PRESSENTER
 		TYPE_MAX
 	}UITYPE;
 
-	CUi(int nPriority = 3);
+	CUi(int nPriority = OBJTYPE_NONE);
 	~CUi();
 	static HRESULT Load(void);
 	static void UnLoad(void);

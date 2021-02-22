@@ -39,7 +39,7 @@ public:
 	}ENEMYTYPE;
 
 	//ƒƒ“ƒoŠÖ”éŒ¾
-	CEnemy(int nPriority = 8);
+	CEnemy(int nPriority = OBJTYPE_ENEMY);
 	~CEnemy();
 	static HRESULT Load(void);
 	static void UnLoad(void);

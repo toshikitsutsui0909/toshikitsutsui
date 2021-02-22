@@ -21,7 +21,7 @@ class CExplosion : public CScene2d
 {
 public:
 	//ƒƒ“ƒoŠÖ”éŒ¾
-	CExplosion(int nPriority = 9);
+	CExplosion(int nPriority = OBJTYPE_EXPLOSION);
 	~CExplosion();
 	static HRESULT Load(void);
 	static void UnLoad(void);
