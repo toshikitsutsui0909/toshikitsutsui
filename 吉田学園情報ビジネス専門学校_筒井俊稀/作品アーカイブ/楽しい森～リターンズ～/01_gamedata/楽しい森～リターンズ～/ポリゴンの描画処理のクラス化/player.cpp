@@ -29,6 +29,10 @@
 #define PLAYER_LIFE_DECREASE 1						//残機減る数
 #define PLAYER_DIE_POINT 5000						//減るポイント数
 
+#define CBULLET_COUNT 60							//チャージ弾が溜まる時間のカウント値
+#define BULLET_SPEED 8.0f							//弾のスピード
+#define CBULLET_SPEED 12.0f							//チャージ弾のスピード
+
 
 //-----------------------------------------------------------------------------
 //	静的メンバ変数の初期化
@@ -195,20 +199,20 @@ void CPlayer::Update(void)
 			m_nChageCount++;
 			CCharge::Add();
 		}
-		if (pInputKeyBoard->GetKeyRelease(DIK_SPACE) && m_nChageCount >= 60)
+		if (pInputKeyBoard->GetKeyRelease(DIK_SPACE) && m_nChageCount >= CBULLET_COUNT)
 		{
 			//チャージ弾
 			pSound->Play(CSound::SOUND_LABEL_SE_SHOT);
 			CChargeBullet::Create(m_pos, D3DXVECTOR3(BULLET_SIZE_PLAYER_X * 2, BULLET_SIZE_PLAYER_Y * 2,
-				0.0f), D3DXVECTOR3(12.0f, 0.0f, 0.0f), CBullet::BULLETTYPE_PLAYER);
+				0.0f), D3DXVECTOR3(CBULLET_SPEED, 0.0f, 0.0f), CBullet::BULLETTYPE_PLAYER);
 			m_nChageCount = 0;
 			CCharge::Set();
 		}
-		else if (pInputKeyBoard->GetKeyRelease(DIK_SPACE) && m_nChageCount < 60)
+		else if (pInputKeyBoard->GetKeyRelease(DIK_SPACE) && m_nChageCount < CBULLET_COUNT)
 		{
 			//通常弾
 			pSound->Play(CSound::SOUND_LABEL_SE_SHOT);
-			CBullet::Create(m_pos, D3DXVECTOR3(BULLET_SIZE_PLAYER_X, BULLET_SIZE_PLAYER_Y, 0.0f), D3DXVECTOR3(8.0f, 0.0f, 0.0f), CBullet::BULLETTYPE_PLAYER);
+			CBullet::Create(m_pos, D3DXVECTOR3(BULLET_SIZE_PLAYER_X, BULLET_SIZE_PLAYER_Y, 0.0f), D3DXVECTOR3(BULLET_SPEED, 0.0f, 0.0f), CBullet::BULLETTYPE_PLAYER);
 			m_nChageCount = 0;
 			CCharge::Set();
 		}
