@@ -26,6 +26,7 @@
 #define TEXTURE_PATH_ENEMY_NORMAL	"data/texture/enemy1.png"	//NORMAL
 #define TEXTURE_PATH_ENEMY_HARD		"data/texture/enemy2.png"	//HARD
 #define TEXTURE_PATH_ENEMY_BOSS		"data/texture/boss1.png"	//boss
+#define PATH_ENEMY_DATA				"data/file/enemydata.txt"
 
 #define ENEMY_LIFE_NORMAL 1										//通常敵の体力
 #define ENEMY_LIFE_HARD 3										//特殊敵の体力
@@ -75,6 +76,8 @@ HRESULT CEnemy::Load(void)
 	LPDIRECT3DDEVICE9 pDevice;
 	pDevice = CManager::GetRenderer()->GetDevice();
 
+	FILE*pFile = NULL;
+
 	//テクスチャの読み込み
 	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_NORMAL, &m_apTexture[ENEMYTYPE::TYPE_NORMAL]);
 
@@ -89,6 +92,7 @@ HRESULT CEnemy::Load(void)
 	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_HARD, &m_apTexture[ENEMYTYPE::TYPE_HARDTYPE]);
 
 	D3DXCreateTextureFromFile(pDevice, TEXTURE_PATH_ENEMY_BOSS, &m_apTexture[ENEMYTYPE::TYPE_BOSS]);
+
 
 	return S_OK;
 }

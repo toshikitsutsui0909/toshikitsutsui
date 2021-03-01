@@ -1,29 +1,7 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (ポリゴンの描画処理のクラス化.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  bg.cpp
-  bullet.cpp
-  charge.cpp
-  enemy.cpp
-  explosion.cpp
-  fade.cpp
-  game.cpp
-  gameover.cpp
-  gaugeber.cpp
-  life.cpp
-  main.cpp
-  manager.cpp
-  player.cpp
-  ranking.cpp
-  renderer.cpp
-  result.cpp
-  scene.cpp
-  scene2d.cpp
   score.cpp
-  title.cpp
-  コンパイル中...
-  tutorial.cpp
-  ui.cpp
   コード生成しています。
-  0 of 302 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  1 of 302 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。

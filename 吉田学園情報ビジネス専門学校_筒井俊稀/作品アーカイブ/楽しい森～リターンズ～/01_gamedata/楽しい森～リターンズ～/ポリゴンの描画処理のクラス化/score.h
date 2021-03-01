@@ -42,6 +42,7 @@ private:
 	CNumber *m_apNumber[MAX_NUMBER];
 	int m_nScore;
 	static int m_nRankingScore[MAX_RANKING];
+	float m_fSize;
 };
 
 

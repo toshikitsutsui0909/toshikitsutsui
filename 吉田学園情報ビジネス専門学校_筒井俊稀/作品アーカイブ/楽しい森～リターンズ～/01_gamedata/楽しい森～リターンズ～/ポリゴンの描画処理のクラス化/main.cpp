@@ -80,7 +80,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	pManager = new CManager;
 
-	pManager->Init(hInstance,hWnd,FALSE);
+	pManager->Init(hInstance,hWnd,TRUE);
 
 	// •ª‰ğ”\‚ğİ’è
 	timeBeginPeriod(1);

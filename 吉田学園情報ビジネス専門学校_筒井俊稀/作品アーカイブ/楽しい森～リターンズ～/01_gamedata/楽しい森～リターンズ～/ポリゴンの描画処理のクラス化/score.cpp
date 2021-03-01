@@ -60,7 +60,7 @@ HRESULT CScore::Init(D3DXVECTOR3 pos, D3DXVECTOR3 size)
 {
 	for (int nCount = 0; nCount < MAX_NUMBER; nCount++)
 	{
-		m_apNumber[nCount] = CNumber::Create(D3DXVECTOR3(pos.x + (size.x * nCount), NUMBER_POS, 0.0f), size);
+		m_apNumber[nCount] = CNumber::Create(D3DXVECTOR3(pos.x + ((size.x + m_fSize) * nCount), NUMBER_POS, 0.0f), size);
 	}
 
 	return S_OK;
@@ -89,6 +89,7 @@ void CScore::Uninit(void)
 //=============================================================================
 void CScore::Update(void)
 {
+
 }
 
 //=============================================================================
